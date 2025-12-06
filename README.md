@@ -1,192 +1,232 @@
-📊 Data-Driven Stock Analysis
-Organizing, Cleaning & Visualizing Nifty-50 Market Trends
-📘 Project Overview
+# 📊 Data-Driven Stock Market Analysis
 
-This project analyzes Nifty 50 stock performance using structured Python workflows, SQL storage, and interactive dashboards.
-The workflow includes data extraction, cleaning, transformation, stock analysis, and visualization using Python, Pandas, Streamlit, and Power BI.
+### **Power BI • Python • MySQL • Streamlit**
 
-The goal is to provide meaningful insights such as top performers, laggards, volatility trends, cumulative returns, sector performance, and overall market behavior.
+This project provides a complete **end-to-end stock analytics system** that processes raw price data, stores it in a relational database, computes financial metrics, and visualises insights using **Power BI** and a **Streamlit web application**.
 
-🧩 Key Features
-✔ Data Extraction
+The goal is to help users understand **market trends, volatility, sector performance, cumulative returns, monthly movers**, and **correlation between stock behaviors**.
 
-Raw data provided in YAML format, organized month-wise.
+---
 
-Extracted and converted into 50 CSV files (one for each stock).
+## 🚀 Features
 
-✔ Data Cleaning (Completed)
+### ✅ **1. SQL Database (MySQL)**
 
-Handled missing values
+A relational schema stores stock metadata and historical price data.
 
-Standardized date formats
+* `stocks` table → basic company info
+* `prices` table → daily OHLC data + computed `daily_return`
+* Includes indexes for faster analytics queries
+* Supports time-series analysis & advanced resampling
+* Auto-computes:
 
-Converted numerical fields
+  * Daily return
+  * Monthly return
+  * Cumulative return
 
-Removed inconsistent or duplicated entries
+### ✅ **2. Power BI Dashboard**
 
-✔ Yearly Return Calculation (Completed)
+A professionally designed BI dashboard with **two pages**:
 
-Formula used:
+#### **Page 1 — Overview (Market Summary)**
 
-Yearly Return = (Last Close - First Close) / First Close * 100
+* Top 10 **Green** (best yearly return) & **Red** (worst yearly return) stocks
+* Top 10 **Most Volatile** stocks
+* KPI Cards
 
-✔ Data Analysis
+  * Green Stocks Count
+  * Red Stocks Count
+  * Average Last Close
+  * Average Volume
+* Sector Performance (Avg Cumulative Return)
+* Cumulative Return Trend (Line Chart)
 
-Includes the following analyses (partially or to be implemented depending on your progress):
+#### **Page 2 — Details (Deep Dive)**
 
-Top 10 Green Stocks (best performers)
+* Monthly Filter Slicer
+* Monthly Top 5 **Gainers**
+* Monthly Top 5 **Losers**
+* Correlation Heatmap of Daily Returns
+* Supports drill-down filtering across visuals
 
-Top 10 Red Stocks (worst performers)
+---
 
-Market Summary
+## 🧪 **3. Streamlit Web App**
 
-% of green vs red stocks
+The Python dashboard includes the following modules:
 
-Average price
+### 📈 Overview
 
-Average volume
+* Green vs Red stocks
+* Top & bottom performers
+* Market insights at a glance
 
-Volatility (standard deviation of daily returns)
+### 📉 Volatility
 
-Monthly top gainers & losers
+* Standard deviation of daily returns
+* Bar chart of volatility by stock
 
-Correlation matrix (heatmap)
+### 📊 Cumulative Returns
 
-Sector-wise performance
+* Computes log cumulative returns
+* Identifies top-performing stocks
 
-✔ Visualization
+### 🏭 Sector Performance
 
-Using Matplotlib/Seaborn/Streamlit:
+* Compares average cumulative return by sector
 
-Bar chart → Top 10 most volatile stocks
+### 🔥 Monthly Movers
 
-Line chart → Top 5 cumulative returns
+* Monthly Top-5 gainers
+* Monthly Top-5 losers
+* Perfect for tracking trading momentum
 
-Heatmap → Stock correlation
+### 🔗 Correlation Heatmap
 
-Bar charts → Monthly gainers & losers
+* Plotly-based interactive correlation matrix
+* Shows relationships between stock movements
+* Useful for portfolio diversification analysis
 
-Bar chart → Sector performance
+---
 
-✔ Streamlit Dashboard
+## 🗂 Project Structure
 
-Interactive UI with:
+```
+📦 Data-Driven-Stock-Analysis
+│
+├── 📁 SQL
+│   └── data_driven_stock_analysis.sql         # Database schema + table creation
+│
+├── 📁 StreamlitApp
+│   ├── app_streamlit_simple.py               # Main Streamlit dashboard
+│   └── requirements.txt                      # Python libraries
+│
+├── 📁 PowerBI
+│   └── data_driven_proj.pbix                 # Power BI report (2 pages)
+│
+├── 📁 Notebooks
+│   └── Data_driven_stock_analysis.ipynb      # EDA, preprocessing, calculations
+│
+├── README.md                                 # Project documentation
+└── LICENSE (optional)
+```
 
-Key metrics
+---
 
-Market summary
+## 🛠️ **Technology Stack**
 
-Upload/show CSVs
+### **Backend / Processing**
 
-Visualizations
+* Python
+* Pandas
+* NumPy
+* Plotly
+* Streamlit
+* Matplotlib
 
-Filter-based exploration
+### **Database**
 
-✔ Power BI Dashboard
+* MySQL
+* Window functions (LAG) for return calculations
 
-(Optional but recommended for evaluation)
+### **Visualization**
 
-Sector performance
+* Power BI
+* Streamlit (Plotly charts)
 
-Top gainers/losers
+---
 
-Market summary tiles
+## 🔧 Setup Instructions
 
-Correlation visuals
+### **1️⃣ Clone the repository**
 
-    🗂 Project Structure
-    📁 Data-Driven-Stock-Analysis/
-    │
-    ├── data/
-    │   ├── raw_yaml/             # Original YAML files
-    │   ├── cleaned_csv/          # Cleaned CSVs (50 files)
-    │    
-    ├── scripts/
-    │   ├── extract_yaml.py
-    │   ├── clean_data.py
-    │   ├── analysis.py
-    │   ├── visualizations.py
-    │
-    ├── streamlit_app/
-    │   └── app.py                # Streamlit dashboard
-    │
-    ├── sql/
-    │   ├── schema.sql
-    │   ├── insert_data.sql
-    │
-    ├── powerbi/
-    │   └── dashboard.pbix        # BI report (optional)
-    │
-    └── README.md
+```bash
+git clone https://github.com/your-username/data-driven-stock-analysis.git
+cd data-driven-stock-analysis
+```
 
+---
 
-🛠 Technologies Used
+### **2️⃣ Setup Virtual Environment**
 
-Python
+```bash
+python -m venv .venv
+source .venv/bin/activate       # Mac/Linux
+.venv\Scripts\activate          # Windows
+```
 
-Pandas
+Install dependencies:
 
-NumPy
-
-Matplotlib
-
-Seaborn
-
-Streamlit
-
-MySQL / PostgreSQL
-
-Power BI
-
-SQLAlchemy (optional)
-
-🚀 How to Run the Project
-1️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
-2️⃣ Run Analysis Scripts
-python scripts/analysis.py
+---
 
-3️⃣ Launch Streamlit App
-streamlit run streamlit_app/app.py
+### **3️⃣ Setup MySQL Database**
 
-4️⃣ Import Data to SQL
+Import the SQL file:
 
-Run the schema + insert scripts:
+```sql
+SOURCE data_driven_stock_analysis.sql;
+```
 
-mysql -u root -p < sql/schema.sql
-mysql -u root -p < sql/insert_data.sql
+Populate tables with your data (CSV or API-fed).
 
-📈 Outputs & Insights
+---
 
-Top 10 best/worst performing stocks
+### **4️⃣ Run Streamlit App**
 
-Market movement summary
+```bash
+streamlit run app_streamlit_simple.py
+```
 
-Volatility ranking
+App will open at:
 
-Sector-based insights
+```
+http://localhost:8501/
+```
 
-Monthly gainers/losers
+---
 
-Correlation between stock movements
+### **5️⃣ Open Power BI Dashboard**
 
-📌 Project Deliverables
+* Launch `data_driven_proj.pbix`
+* Refresh data source
+* Ensure connection to MySQL is configured
 
-✔ Cleaned dataset (CSV format)
+---
 
-✔ Python scripts (ETL + Analysis + Visuals)
+## 📊 Outputs & Insights
 
-✔ SQL database
+### You will be able to:
 
-✔ Streamlit dashboard
+* Identify outperforming sectors
+* Detect high-volatility stocks
+* Track trends over months
+* Observe correlations between companies
+* Compare cumulative performance across time
 
-✔ (Optional) Power BI dashboard
+---
 
-✔ README.md
+## 📌 Example Screenshots
 
-✔ Demo video (for evaluation)
+## 📸 Details: <img width="1286" height="723" alt="image" src="https://github.com/user-attachments/assets/eb6379e7-62d7-473f-b4fd-0c6e1c2328bd" />
 
-🎥 Demo Video (Mandatory for evaluation)
 
-📌 Upload your project demo on YouTube / LinkedIn and paste the link here.
+## 📸 Overview: <img width="1286" height="723" alt="image" src="https://github.com/user-attachments/assets/249f65d3-11c1-43c7-987f-657bab2d06bd" />
+
+
+
+## ✨ Future Enhancements
+
+* Add API to auto-update daily stock data
+* Deploy Streamlit dashboard publicly
+* Add portfolio simulation
+* Create forecasting models using Prophet or LSTM
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
