@@ -108,7 +108,6 @@ The Python dashboard includes the following modules:
 │   └── Data_driven_stock_analysis.ipynb      # EDA, preprocessing, calculations
 │
 ├── README.md                                 # Project documentation
-└── LICENSE (optional)
 ```
 
 ---
@@ -211,22 +210,7 @@ http://localhost:8501/
 
 ## 📌 Example Screenshots
 
-## 📸 Details: <img width="1286" height="723" alt="image" src="https://github.com/user-attachments/assets/eb6379e7-62d7-473f-b4fd-0c6e1c2328bd" />
-
 
 ## 📸 Overview: <img width="1286" height="723" alt="image" src="https://github.com/user-attachments/assets/249f65d3-11c1-43c7-987f-657bab2d06bd" />
 
-
-
-## ✨ Future Enhancements
-
-* Add API to auto-update daily stock data
-* Deploy Streamlit dashboard publicly
-* Add portfolio simulation
-* Create forecasting models using Prophet or LSTM
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License.
+## 📸 Details: <img width="1285" height="721" alt="Screenshot 2025-12-06 230057" src="https://github.com/user-attachments/assets/ce3cb7c6-126a-4c01-9e0f-2590a52b459d" />
